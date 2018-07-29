@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+		<title>JSON字符串转Java实体类(JavaBean、Entity)</title>
+		<!-- Site CSS -->
+		<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/java2pojo.min.css" />
+
+		<script src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			function download_zip() {
+				var package_name = $('#package_name').val();
+				var zip = new JSZip();
+				var code = zip.folder(package_name.replace(/\./g, "/"));
+
+				$('.result').each(function() {
+					code.file($(this).attr('class_name') + '.java', $(this).val());
+				});
+
+				var content = zip.generate({
+					type: "blob"
+				});
+				// see FileSaver.js
+				saveAs(content, "bejson_gen_beans.zip");
+			}
+
+			function gen() {
+				try {
+					$("#genDiv").html("");
+					$("#result-list .result_row").remove();
+					$('#resule_text').text('');
+
+					var class_name = $('#class_name').val();
+					var package_name = $('#package_name').val();
+					//获取要解析的文本及文本类型
+					var text = $('#json_content').val();
+					//目前只支持json一种格式
+					var textType = $('#in_type').val();
+
+					if(text) {
+						var beans;
+
+						if(textType === 'json') {
+							beans = getBeanFieldFromJson(text, class_name);
+						} else if(textType === 'sql') {
+							alert("还没实现");
+							return;
+						}
+
+						//把本程序定义的数据格式转换为文本
+						$.each(beans, function(i, v) {
+							var beanText = toBeanText(v, package_name);
+							var textCss = "";
+							if(i != 0) {
+								textCss = "small-text";
+							}
+							beanText = beanText.replace("<int>", "<Integer>").replace("<long>", "<Long>");
+							//var html = '<div class="row result_row">'+'<textarea class_name="' + v.name + '" class="result '+ textCss +'" >'+ beanText + '</textarea></div>';
+							var html = '<textarea class_name="' + v.name + '" class="result ' + textCss + '" onmouseover="this.focus();this.select()">' + beanText + '</textarea>';
+							$("#genDiv").append(html);
+
+						})
+						$('#resule_text').html('<span class="green">Success!</span>');
+						$('#download_btn').show();
+					}
+				} catch(err) {
+					var tip = "";
+					if(err.message.indexOf("Parse error on line") != -1) {
+						tip = err.message;
+					} else {
+						tip = "parse error,makesure the json is right";
+					}
+					$('#resule_text').html('<span class="red">' + tip + '</span>');
+					$('#download_btn').hide();
+				}
+			}
+		</script>
+	</head>
+
+	<body style="padding: 20px;">
+		<div class="container">
+			<div class="row">
+				<!-- content st -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="media">
+							<div class="media-body">
+								<h4 class="media-heading">JSON字符串转Java实体类(JavaBean、Entity)</h4>
+								<div id="desc1">JSON字符串转Java实体类(JavaBean)</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel-body">
+						<!--内容块开始-->
+						<ul class="new_tools_list">
+							<li>填写JSON内容，生成Javabean的类名、包名即可<span class="green">自动生成JavaBean代码，并直接打包下载</span>。</li>
+						</ul>
+						<textarea placeholder="贴入要生成Pojo的Json代码" id="json_content" onchange="gen();" onkeyup="gen();"></textarea>
+						<form action="" id="result-list" method="get">
+							<div class='row'>
+								<span class='span strong'>&nbsp;Class：</span>
+								<div class='span two xs-six'>
+									<input type="text" class="input-text" id="class_name" placeholder="类名" value="JsonRootBean"></input>
+								</div>
+								<span class='span strong'>&nbsp;Package：</span>
+								<div class='span three xs-six'>
+									<input type="text" class="input-text" id="package_name" placeholder="包名根路径" value="com.gzsas.entity"></input>
+								</div>
+								<div class='span two xs-six'>
+									<select id="in_type" class="select">
+										<option value="json" selected="selected">JSON</option>
+									</select>
+								</div>
+								<button class='button primary small' onclick="gen();" type="button">生成JavaBean</button>
+								<button style="display: none;" class='button success small' id="download_btn" onclick="download_zip();" type="button">下载代码</button>
+							</div>
+							<div>
+								<div class="alert success" id="resule_text"></div>
+							</div>
+							<div id="genDiv"></div>
+						</form>
+						<!--内容块结束-->
+					</div>
+					<div class="panel-footer"></div>
+				</div>
+				<!-- content ed -->
+			</div>
+		</div>
+		<script src="js/java2pojo.min.js"></script>
+	</body>
+
+</html>
