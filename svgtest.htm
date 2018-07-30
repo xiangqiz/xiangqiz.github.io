@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <rect width="300" height="100"
+  style="fill:rgb(0,0,255);stroke-width:1;stroke:rgb(0,0,0)"/>
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+   <circle cx="100" cy="50" r="40" stroke="black" stroke-width="2" fill="red" />
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <ellipse cx="110" cy="80" rx="100" ry="50" style="fill:yellow;stroke:purple;stroke-width:2" />
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <line x1="0" y1="0" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:2" />
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="190">
+   <polygon points="100,10 40,180 190,60 10,60 160,180"
+   style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;"/>
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <polyline points="20,20 40,25 60,40 80,120 120,140 200,180"
+  style="fill:none;stroke:black;stroke-width:3" />
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <path d="M150 0 L75 200 L225 200 Z" />
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="400" width="450">
+  <path id="lineAB" d="M 100 350 l 150 -300" stroke="red"
+  stroke-width="3" fill="none" />
+  <path id="lineBC" d="M 250 50 l 150 300" stroke="red"
+  stroke-width="3" fill="none" />
+  <path d="M 175 200 l 150 0" stroke="green" stroke-width="3"
+  fill="none" />
+  <path d="M 100 350 q 150 -300 300 0" stroke="blue"
+  stroke-width="5" fill="none" />
+  <!-- Mark relevant points -->
+  <g stroke="black" stroke-width="3" fill="black">
+    <circle id="pointA" cx="100" cy="350" r="3" />
+    <circle id="pointB" cx="250" cy="50" r="3" />
+    <circle id="pointC" cx="400" cy="350" r="3" />
+  </g>
+  <!-- Label the points -->
+  <g font-size="30" font="sans-serif" fill="black" stroke="none"
+  text-anchor="middle">
+    <text x="100" y="350" dx="-30">A</text>
+    <text x="250" y="50" dy="-10">B</text>
+    <text x="400" y="350" dx="30">C</text>
+  </g>
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <text x="0" y="15" fill="red">I love SVG</text>
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <a xlink:href="http://www.runoob.com/svg/svg-examples.html" target="_blank">
+    <text x="0" y="15" fill="red" transform="rotate(30 20,40)">SVG 实例</text>
+  </a>
+</svg>
+
+</body>
+</html>
