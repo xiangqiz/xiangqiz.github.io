@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>clock</title>
+		<style type="text/css">
+			#myclock {
+				display: block;
+				margin: 100px auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="myclock" width="300px" height="300px"></canvas>
+	</body>
+	<script type="text/javascript">
+		var canvas = document.getElementById('myclock');
+		var ctx = canvas.getContext('2d');
+		var width = canvas.width;
+		var height = canvas.height;
+		var r = width / 2;
+		var rem = width / 200;
+
+		function drawBackground() {
+			ctx.save();
+			ctx.translate(r, r);
+			ctx.beginPath();
+			ctx.strokeStyle = '#76a4bb';
+			ctx.lineWidth = 10 * rem;
+			ctx.arc(0, 0, r - 10 * rem / 2, 0, 2 * Math.PI, false);
+			ctx.stroke();
+
+			var times = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2];
+			ctx.font = 18 * rem + "px Arial";
+			ctx.textAlign = 'center';
+			ctx.textBaseline = 'middle';
+			times.forEach((time, i) => {
+				var ran = i * 2 * Math.PI / 12;
+				var timer = r - 30 * rem;
+				var x = Math.cos(ran) * timer;
+				var y = Math.sin(ran) * timer;
+				ctx.fillText(time, x, y);
+			});
+			for(var i = 0; i < 60; i++) {
+				var ran = i * 2 * Math.PI / 60;
+				var dotr = r - 18 * rem;
+				var x = Math.cos(ran) * dotr;
+				var y = Math.sin(ran) * dotr;
+				if(i % 5 === 0) {
+					ctx.fillStyle = "#000";
+				} else {
+					ctx.fillStyle = "#ccc";
+				}
+				ctx.beginPath();
+				ctx.arc(x, y, 2 * rem, 0, 2 * Math.PI);
+				ctx.fill();
+			}
+		}
+
+		function drawHour(hour, minute) {
+			var ran = hour * 2 * Math.PI / 12;
+			var mran = minute * 2 * Math.PI / 12 / 60;
+			ctx.save();
+			ctx.beginPath();
+			ctx.rotate(ran + mran);
+			ctx.lineWidth = 6 * rem;
+			ctx.lineCap = 'round';
+			ctx.moveTo(0, 10 * rem);
+			ctx.lineTo(0, -r / 2);
+			ctx.stroke();
+			ctx.restore();
+		}
+
+		function drawMinute(minute) {
+			var ran = minute * 2 * Math.PI / 60;
+			ctx.save();
+			ctx.beginPath();
+			ctx.rotate(ran);
+			ctx.lineWidth = 3 * rem;
+			ctx.lineCap = 'round';
+			ctx.moveTo(0, 10 * rem);
+			ctx.lineTo(0, -r + 30 * rem);
+			ctx.stroke();
+			ctx.restore();
+		}
+
+		function drawSecond(second) {
+			var ran = second * 2 * Math.PI / 60;
+			ctx.save();
+			ctx.beginPath();
+			ctx.rotate(ran);
+			ctx.lineWidth = 1;
+			ctx.lineCap = 'round';
+			ctx.fillStyle = '#f00';
+			ctx.moveTo(-2 * rem, 20 * rem);
+			ctx.lineTo(2 * rem, 20 * rem);
+			ctx.lineTo(1, -r + 18 * rem);
+			ctx.fill();
+			ctx.restore();
+		}
+
+		function drawDot() {
+			ctx.beginPath();
+			ctx.fillStyle = '#fff';
+			ctx.arc(0, 0, 3 * rem, 0, 2 * Math.PI);
+			ctx.fill();
+		}
+
+		! function draw() {
+			var now = new Date();
+			var hour = now.getHours();
+			var minute = now.getMinutes();
+			var second = now.getSeconds();
+
+			ctx.clearRect(0, 0, width, height);
+			drawBackground()
+			drawHour(hour, minute)
+			drawMinute(minute)
+			drawSecond(second)
+			drawDot()
+			ctx.restore();
+
+			setTimeout(draw, 1000);
+		}();
+	</script>
+
+</html>
