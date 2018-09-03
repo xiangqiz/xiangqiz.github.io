@@ -1,0 +1,422 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>app升级</title>
+<meta name="decorator" content="default" />
+<link rel="shortcut icon" href="/favicon.ico">
+<link href="/res/bootstrap.min.css" rel="stylesheet">
+<link href="/res/select2/select2.css" rel="stylesheet" />
+<link href="/res/jquery-validation/1.11.1/jquery.validate.min.css" rel="stylesheet" />
+<link href="/res/jquery-jbox/2.3/Skins/Bootstrap/jbox.css" rel="stylesheet" />
+<script src="/res/jquery-1.9.1.min.js"></script>
+<script src="/res/select2/select2.min.js"></script>
+<script src="/res/jquery-validation/1.11.1/jquery.validate.min.js"></script>
+<script src="/res/jquery-jbox/2.3/jquery.jBox.min.js"></script>
+<script src="/res/open.min.js"></script>
+<script src="/res/ajaxfileupload.js"></script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<style>
+	html {
+		cursor:url("/res/cs019_01.cur"),auto;
+	}
+	.xing {
+		color: red;
+		margin-right: 0.5em;
+		width: 2.0em;
+		height: 2.0em;
+	}
+	
+	.hidden {
+		display: none;
+	}
+	
+	.wrap {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: #fff left center no-repeat;
+		background-attachment: fixed;
+		background-size: cover;
+	}
+	
+	.people {
+		float: right;;
+		width: 165px;;
+		height: 70px;;
+		position: relative;;
+		top: 82px;;
+		left: -15px;;
+		margin-right: 80px
+	}
+	
+	.people .tou {
+		background: url("/res/images/tou.png") no-repeat;;
+		width: 97px;;
+		height: 92px;;
+		position: absolute;;
+		top: -87px;;
+		left: 140px
+	}
+	
+	.people .left_hand {
+		background: url("/res/images/left_hand.png") no-repeat;;
+		width: 32px;;
+		height: 37px;;
+		position: absolute;;
+		top: -58px;;
+		left: 150px
+	}
+	
+	.people .right_hand {
+		background: url("/res/images/right_hand.png") no-repeat;;
+		width: 32px;;
+		height: 37px;;
+		position: absolute;;
+		top: -58px;;
+		right: -60px
+	}
+	
+	.people .initial_left_hand {
+		background: url("/res/images/hand.png") no-repeat;;
+		width: 30px;;
+		height: 20px;;
+		position: absolute;;
+		top: -32px;;
+		left: 100px
+	}
+	
+	.people .initial_right_hand {
+		background: url("/res/images/hand.png") no-repeat;;
+		width: 30px;;
+		height: 20px;;
+		position: absolute;;
+		top: -32px;;
+		right: -112px
+	}
+	
+	.people .left_hand,.people .right_hand,.people .initial_left_hand,.people .initial_right_hand
+		{
+		-webkit-transition: 0.3s ease-out;
+		-moz-transition: 0.3s ease-out;
+		-o-transition: 0.3s ease-out;
+		-ms-transition: 0.3s ease-out;
+		transition: 0.3s ease-out;
+	}
+	
+	#inputForm {
+		background-color: #ffffff;
+		border: 2px solid #eee;
+		border-radius: 5px;
+		padding: 20px;
+	}
+	
+	.hero-unit {
+		margin-bottom: 0;
+		margin-top: 50px;
+	}
+
+	.text-popup {
+	    animation: textPopup 1s;
+	    color: red;
+	    user-select: none;
+	    white-space: nowrap;
+	    position: absolute;
+	    z-index: 99;
+	}
+	@keyframes textPopup {
+	    0%, 100% {
+	        opacity: 0;
+	    }
+	    5% {
+	        opacity: 1;
+	    }
+	    100% {
+	        transform: translate(50px, -80px);    
+	    }
+	}
+	</style>
+<script>$(document).ready(
+						function() {
+							$("#inputForm").validate();
+							changeBackground();
+
+						    $('#keypass').on('focus', function () {
+						        $('#left-hander').removeClass('initial_left_hand').addClass('left_hand');
+						        $('#right-hander').removeClass('initial_right_hand').addClass('right_hand')
+						    }).on('blur', function () {
+						        $('#left-hander').addClass('initial_left_hand').removeClass('left_hand');
+						        $('#right-hander').addClass('initial_right_hand').removeClass('right_hand')
+						    });
+							$("#appUpload")
+									.click(
+											function() {
+												var fileName = $("#appFile").val();
+												var type = $.trim($("#appName").val());
+												if (fileName == "") {
+													$.jBox.tip('请选择需要上传的文件!',
+															"tip");
+													return;
+												}
+												var begin = fileName
+														.lastIndexOf(".");
+												if (begin < 0) {
+													$.jBox.tip('上传的文件格式不正确!',
+															"tip");
+													return;
+												}
+												var suffix = fileName.substring(
+														begin + 1, fileName.length);
+												if (suffix != 'apk' && suffix != 'ipa') {
+													$.jBox
+															.tip(
+																	'上传的文件不是安装包!',
+																	"tip");
+													return;
+												}
+												if(suffix == 'ipa' && $("#appVersion").val()==""){
+													$.jBox
+															.tip(
+																	'先上传apk!',
+																	"tip");
+													return;
+												}
+												var oldName = '';
+												$.jBox
+														.confirm(
+																(oldName == "" ? ""
+																		: "该操作会删除已存储的"
+																				+ oldName
+																				+ "<br/>")
+																		+ '确定上传吗？',
+																'应用上传提示',
+																function(v, h, f) {
+																	if (v == 'ok') {
+																		fileUpload(type,fileName);
+																	}
+																},
+																{
+																	buttonsFocus : 1
+																});
+											});
+	
+						});
+
+		function fileUpload(type,fileName){
+			$.jBox.tip("上传中...",'loading',{opacity : 0});
+			$.ajaxFileUpload({
+				url : 'appupdate/upload?type='+type,
+				secureuri : false, //是否启用安全机制  
+				fileElementId : 'appFile', //file的id 
+				dataType : 'json', //返回的类型  
+				async : false, //取消异步发送
+				success : function(data, textStatus) { //调用成功时怎么处理  
+					$("#jbox").remove();
+					if (data) {
+						//var json = $.parseJSON(data);
+						var json = data;
+						if(json.appVersion)
+						$("#appVersion").val(json.appVersion);
+						if(json.packageName)
+						$("#packageName").val(json.packageName);
+						var $msg = $('<div class="alert alert-success"><strong>'+fileName+' </strong>上传成功！</div>');
+						$('#appUploadShow').append($msg);
+					} else {
+						$.jBox.tip('上传失败!',"error");
+					}
+				},
+				error : function(data) {
+					$.jBox.tip('上传失败!',"error");
+				}
+			});
+		}
+		
+		document.onkeydown=function(e){
+		    var currKey=0,e=e||event;
+		    currKey=e.keyCode||e.which||e.charCode;//支持IE、FF
+		    if(currKey==13) {
+		    	if('upgradeContent'!=e.target.id) {
+		    		$("#btnSubmit").trigger("click");
+		    	}
+		    }
+		}
+	
+		function checkInfo() {
+			if ($("#packageName").val() == "") {
+				$.jBox.tip('没有上传应用！', "tip");
+				return;
+			}
+			if ($("#keypass").val() == "") {
+				$.jBox.tip('keypass未填写！', "tip");
+				return;
+			}
+			$("#btnSubmit").submit();
+			return;
+		}
+		
+		function changeBackground(){
+		    var localpath = 'http://60.174.249.206:9999/in/modules/login/images/background/';
+		    var festivals={
+		        '2018/1/5': localpath+'xiaohan.jpg',//小寒
+		        '2018/1/20': localpath+'dahan.jpg',//大寒
+		        '2018/1/24': localpath+'labajie.jpg',//腊八节
+		        '2018/2/4': localpath+'lichun.jpg',//立春
+		        '2018/2/8': localpath+'xiaonian.jpg',//小年
+		        '2018/2/14': localpath+'2.14.jpg',//情人节
+		        '2018/2/11': localpath+'chunjie.jpg',//春节
+		        '2018/2/12': localpath+'chunjie.jpg',//春节
+		        '2018/2/13': localpath+'chunjie.jpg',//春节
+		        '2018/2/15': localpath+'chunjie.jpg',//春节
+		        '2018/2/16': localpath+'chunjie.jpg',//春节
+		        '2018/2/17': localpath+'chunjie.jpg',//春节
+		        '2018/2/18': localpath+'chunjie.jpg',//春节
+		        '2018/2/19': localpath+'chunjie.jpg',//春节
+		        '2018/2/20': localpath+'chunjie.jpg',//春节
+		        '2018/2/21': localpath+'chunjie.jpg',//春节
+		        '2018/3/2': localpath+'yuanxiaojie.jpg',//元宵节
+		        '2018/3/5': localpath+'jingzhe.jpg',//惊蛰
+		        '2018/3/8': localpath+'3.8.jpg',//妇女节
+		        '2018/3/12': localpath+'3.12.jpg',//植树节
+		        '2018/3/18': localpath+'2.2.jpg',//2月2龙抬头        
+		        '2018/3/15': localpath+'3.15.jpg',//消费者权益日
+		        '2018/3/21': localpath+'chunfen.jpg',//春分
+		        '2018/4/1': localpath+'4.1.jpg',//愚人节
+		        '2018/4/4': localpath+'qingmingjie.jpg',//清明节
+		        '2018/4/5': localpath+'qingmingjie.jpg',//清明节
+		        '2018/4/20': localpath+'guyu.jpg',//谷雨
+		        '2018/4/22': localpath+'diqiuri.jpg',//地球日
+		        '2018/4/25': localpath+'4.26.jpg',//知识产权日
+		        '2018/4/26': localpath+'4.26.jpg',//知识产权日        
+		        '2018/4/28': localpath+'5.1.jpg',//劳动节
+		        '2018/4/29': localpath+'5.1.jpg',//劳动节
+		        '2018/4/30': localpath+'5.1.jpg',//劳动节
+		        '2018/5/1': localpath+'5.1.jpg',//劳动节
+		        '2018/5/4': localpath+'5.4.jpg',//青年节
+		        '2018/5/5': localpath+'lixia.jpg',//立夏
+		        '2018/5/12': localpath+'hushijie.jpg',//护士节
+		        '2018/5/13': localpath+'muqinjie.jpg',//母亲节
+		        '2018/5/21': localpath+'xiaoman.jpg',//小满
+		        '2018/6/1': localpath+'6.1.jpg',//儿童节
+		        '2018/6/6': localpath+'mangzhong.jpg',//芒种
+		        '2018/6/14': localpath+'5.5_.jpg',//端午
+		        '2018/6/15': localpath+'5.5.jpg',//端午
+		        '2018/6/16': localpath+'5.5_.jpg',//端午
+		        '2018/6/17': localpath+'fuqinjie.jpg',//父亲节
+		        '2018/6/18': localpath+'5.5.jpg',//端午
+		        '2018/6/21': localpath+'xiazhi.jpg',//夏至
+		        '2018/7/1': localpath+'7.1.jpg',//建党节
+		        '2018/7/7': localpath+'xiaoshu.jpg',//小暑
+		        '2018/7/23': localpath+'dashu.jpg',//大暑
+		        '2018/8/1': localpath+'8.1.jpg',//建军节
+		        '2018/8/7': localpath+'liqiu.jpg',//立秋
+		        '2018/8/23': localpath+'chushu.jpg',//处暑
+		        '2018/8/17': localpath+'7.7.jpg',//七夕
+		        '2018/9/8': localpath+'bailu.jpg',//白露
+		        '2018/9/10': localpath+'9.10.jpg',//教师节
+		        '2018/9/20': localpath+'zhongqiu.jpg',//中秋
+		        '2018/9/21': localpath+'zhongqiu.jpg',//中秋
+		        '2018/9/23': localpath+'qiufen.jpg',//秋分
+		        '2018/9/28': localpath+'10.1.jpg',//国庆
+		        '2018/9/29': localpath+'10.1.jpg',//国庆
+		        '2018/9/30': localpath+'10.1.jpg',//国庆
+		        '2018/10/1': localpath+'10.1.1.jpg',//国庆
+		        '2018/10/2': localpath+'10.1.1.jpg',//国庆
+		        '2018/10/3': localpath+'10.1.1.jpg',//国庆
+		        '2018/10/4': localpath+'10.1.1.jpg',//国庆
+		        '2018/10/5': localpath+'10.1.2.jpg',//国庆
+		        '2018/10/6': localpath+'10.1.2.jpg',//国庆
+		        '2018/10/7': localpath+'10.1.2.jpg',//国庆
+		        '2018/10/8': localpath+'hanlu.jpg',//寒露
+		        '2018/10/17': localpath+'chongyang.jpg',//重阳
+		        '2018/10/23': localpath+'shuangjiang.jpg',//霜降
+		        '2018/10/31': 'http://pic1.win4000.com/wallpaper/0/585a3631d1d7c.jpg',//万圣节
+		        '2018/11/7': localpath+'lidong.jpg',//立冬
+		        '2018/11/22': localpath+'xiaoxue.jpg',//小雪
+		        '2018/12/7': localpath+'daxue.jpg',//大雪
+		        '2018/12/22': localpath+'dongzhi.jpg',//冬至
+		        '2018/12/23': localpath+'christmas.jpg',//圣诞节
+		        '2018/12/24': localpath+'christmas.jpg',//圣诞节
+		        '2018/12/25': localpath+'christmas.jpg',//圣诞节
+		        '2018/12/28': localpath+'1.1.jpg',//元旦
+		        '2018/12/29': localpath+'1.1.jpg',//元旦
+		        '2018/12/30': localpath+'1.1.jpg',//元旦
+		        '2019/1/1': localpath+'1.1.jpg'//元旦
+		    };
+		    now = new Date(),hour = now.getHours();
+		    var background = festivals[now.getFullYear()+'/'+(now.getMonth()+1)+'/'+now.getDate()];
+		    if(background == undefined){
+		        if(hour >=7 && hour <=11){
+		            background = localpath+'morning1.jpg';
+		        }else if(hour >=12 && hour <=17){
+		            background = localpath+'afternoon1.jpg';
+		        }else {
+		            background = localpath+'evening1.jpg';
+		        }
+		    }
+		    $('.wrap').css('background-image', 'url('+background+')');
+		}</script>
+</head>
+<body>
+<div class="wrap">
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner">
+<div class="container">
+<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
+<a class="brand" href="#">GZSAS</a>
+<div class="nav-collapse collapse">
+<ul class="nav">
+	<li class="active"><a href="#">Home</a></li>
+	<li><a href="/">About</a></li>
+</ul>
+</div>
+<!--/.nav-collapse --></div>
+</div>
+</div>
+<div class="container"><!-- Main hero unit for a primary marketing message or call to action -->
+<div class="hero-unit">
+<h1>UPDATE, EASY!</h1>
+<div class="people">
+<div class="tou"></div>
+<div id="left-hander" class="transition initial_left_hand"></div>
+<div id="right-hander" class="transition initial_right_hand"></div>
+</div>
+</div>
+<form id="inputForm" action="appupdate/update" method="post" class="form-horizontal">
+<div class="control-group"><label class="control-label" for="appName">APP名称:</label>
+<div class="controls"><select id="appName" name="appName" maxlength="200" class="required" autocomplete="off">
+	<option value="">请选择...</option>
+	<option value="INTELL_GZISAS" selected="selected">智慧营维</option>
+	<option value="GZISAS">运维客户端</option>
+</select></div>
+</div>
+<div class="control-group"><label class="control-label"><span class="xing">*</span>APP包:</label>
+<div id="appUploadShow" class="controls"><input type="file" accept=".ipa,.apk" name="appFile" id="appFile" /> <input id="appUpload" type="button" value="上传" class="btn btn-primary"> <span
+	style="color: #aaa;margin-left: 20px">先上传apk！</span></div>
+</div>
+<div id="packageNameShow" class="control-group"><label class="control-label" for="packageName">包名称:</label>
+<div class="controls"><input id="packageName" style="width: 40%;" readonly="true" htmlEscape="false" maxlength="200" /></div>
+</div>
+<div id="appVersionShow" class="control-group"><label class="control-label" for="appVersion"><span class="xing">*</span>版本号:</label>
+<div class="controls"><input name="appVersion" id="appVersion" ondblclick="javascript:this.readOnly=false" readonly="true" title="双击可编辑" class="required" /></div>
+</div>
+<div id="otherShow">
+<div class="control-group"><label class="control-label" for="upgradeContent"><span class="xing">*</span>升级内容(JSON):</label>
+<div class="controls"><textarea name="upgradeContent" id="upgradeContent" htmlEscape="false" rows="4" class="input-xxlarge required"></textarea></div>
+</div>
+</div>
+<div class="form-actions"><input name="keypass" id="keypass" type="password" placeholder="keypass"> <input id="btnSubmit" class="btn btn-primary" onclick="checkInfo();" type="button"
+	value="保 存" /></div>
+</form>
+</div>
+<!-- /container --></div>
+</body>
+</html>
