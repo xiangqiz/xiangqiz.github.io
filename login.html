@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>登录</title>
+        <style type="text/css">
+            * {
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+
+            h2 {
+                font-weight: 500;
+                color: #333;
+                line-height: 1.1;
+                font-size: 30px;
+                margin-top: 20px;
+                margin-bottom: 10px
+            }
+
+            body {
+                font-size: 14px;
+                margin: 0;
+                padding-top: 80px;
+                padding-bottom: 40px;
+                background-color: #eee;
+            }
+
+            .form-signin {
+                max-width: 380px;
+                padding: 30px;
+                margin: 0 auto;
+            }
+
+            .form-signin .form-control {
+                position: relative;
+                height: auto;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                padding: 10px;
+                font-size: 16px;
+            }
+
+            .form-signin input[type="text"] {
+                margin-bottom: -1px;
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+
+            .form-signin input[type="password"] {
+                margin-bottom: 10px;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+
+            .form-control {
+                display: block;
+                width: 100%;
+                height: 34px;
+                padding: 6px 12px;
+                font-size: 14px;
+                line-height: 1.42857143;
+                color: #555;
+                background-color: #fff;
+                background-image: none;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+                box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+                -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+                -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+                transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            }
+
+            .form-control:focus {
+                z-index: 2;
+                border-color: #66afe9;
+                -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+                box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+            }
+
+            .checkbox input[type=checkbox] {
+                position: absolute;
+                margin-left: -20px;
+                margin-top: 4px;
+            }
+
+            .checkbox label {
+                min-height: 20px;
+                padding-left: 20px;
+                font-weight: 400;
+                cursor: pointer;
+            }
+
+            .btn-primary {
+                margin-top: 10px;
+                color: #fff;
+                background-color: #337ab7;
+                border-color: #2e6da4;
+                padding: 10px 16px;
+                font-size: 18px;
+                line-height: 1.3333333;
+                border-radius: 6px;
+                width: 100%;
+            }
+
+            .btn-primary:hover {
+                color: #fff;
+                background-color: #286090;
+                border-color: #204d74
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <form class="form-signin" action="main.html">
+                <h2 class="form-signin-heading">请登录</h2>
+                <input type="text" id="username" class="form-control" placeholder="用户名" required autofocus>
+                <input type="password" id="passwd" class="form-control" placeholder="密码" required>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me">记住密码
+                    </label>
+                </div>
+                <button class="btn-primary" type="submit">登录</button>
+            </form>
+        </div>
+    </body>
+</html>
