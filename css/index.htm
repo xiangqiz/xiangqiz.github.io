@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="renderer" content="webkit" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>在线生成css代码厂商前缀</title>
+	<link rel="stylesheet" href="autoprefixer.css" />
+</head>
+
+<body>
+
+	<article>
+		<h1 class="group-title">在线生成css代码厂商前缀</h1>
+		<div class="group-form">
+			<div class="page-wrap">
+				<div class="textarea-box">
+					<p class="js-version version"></p>
+					<textarea autofocus class="textarea textarea-left js-input"></textarea>
+					<pre class="textarea textarea-right" contenteditable="">
+                        <code class="language-css js-output"><strong>Loading...</strong></code>
+                    </pre>
+				</div>
+				<!--底部-->
+				<form class="filter js-filter">
+					<label class="filter__text">Filter&nbsp;</label>
+					<input type="text" class="filter__input js-browsers-filter" placeholder="> 1%, last 2 versions">
+					<input type="submit" class="filter__apply" value="Apply">
+					<button class="select js-select" type="button">Select result</button>
+				</form>
+				<p style="color: red;">tips: 【Filter last
+					<b style="color: #0a00ff">4</b> version 】值越大兼容性越好！</p>
+				<p>查看生成的css代码支持哪些浏览器
+					<a class="js-link-browserlist" href="//browserl.ist" target="_blank">browserl.ist</a>
+				</p>
+			</div>
+		</div>
+	</article>
+	<script src="autoprefixer.js"></script>
+</body>
+
+</html>
