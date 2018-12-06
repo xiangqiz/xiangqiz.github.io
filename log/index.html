@@ -29,8 +29,8 @@
 				let gdps = area1.value;
 				let ps = area2.value;
 				if(gdp && p && gdps && ps) {
-					let arrgdp = gdps.split('\n');
-					let arrp = ps.split('\n');
+					let arrgdp = gdps.split('\t');
+					let arrp = ps.split('\t');
 					if(arrgdp.length != arrp.length) {
 						console.log('arrgdp.length', arrgdp.length);
 						console.log('arrp.length', arrp.length);
