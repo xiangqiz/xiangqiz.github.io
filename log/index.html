@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="utf-8" />
+		<title>计算器</title>
+	</head>
+
+	<body>
+		<form action="#" method="post">
+			gdp<input type="text" id="text" value="" /> p
+			<input type="text" id="text0" value="" />
+			<br /> gdps
+			<textarea id="area1" rows="9" cols="100"></textarea>
+			<br /> ps
+			<textarea id="area2" rows="9" cols="100"></textarea>
+			<br />
+			<input type="button" value="计算" onclick="clickHandle()" />
+			<br /> result
+			<textarea id="area3" rows="10" cols="100"></textarea>
+		</form>
+		<script type="text/javascript">
+			"use strict"
+
+			function clickHandle() {
+				let result = 0;
+				let gdp = text.value;
+				let p = text0.value;
+				let gdps = area1.value;
+				let ps = area2.value;
+				if(gdp && p && gdps && ps) {
+					let arrgdp = gdps.split('\n');
+					let arrp = ps.split('\n');
+					if(arrgdp.length != arrp.length) {
+						console.log('arrgdp.length', arrgdp.length);
+						console.log('arrp.length', arrp.length);
+						alert('gdps与ps大小不一');
+						return;
+					}
+					console.log(arrgdp);
+					arrgdp.forEach((item, index) => {
+						let tempGdp = item / gdp;
+						let tempP = arrp[index] / p;
+						result += tempGdp * Math.log(tempGdp / tempP);
+						console.log('result', index + 1, result);
+					})
+					if(0 != result) {
+						let lastResult = area3.value;
+						area3.value = (lastResult.length > 0 ? lastResult + '\t' : '') + result;
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>
