@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 	<dict>
@@ -10,7 +10,7 @@
 					<dict>
 						<key>kind</key>
 						<string>software-package</string>
-						<key>url</key>							<string>http://202.98.197.52:9190/androidRest/page/GZISAS.ipa</string>
+						<key>url</key>							<string>http://114.135.116.32:9190/androidRest/page/GZISAS.ipa</string>
 					</dict>
 					<dict>
 						<key>kind</key>
@@ -18,7 +18,7 @@
 						<key>needs-shine</key>
 						<true/>
 						<key>url</key>
-						<string>http://202.98.197.52:9190/androidRest/page/Icon@2x.png</string>
+						<string>http://114.135.116.32:9190/androidRest/page/Icon@2x.png</string>
 					</dict>
 					<dict>
 						<key>kind</key>
@@ -26,7 +26,7 @@
 						<key>needs-shine</key>
 						<true/>
 						<key>url</key>
-						<string>http://202.98.197.52:9190/androidRest/page/Icon.png</string>
+						<string>http://114.135.116.32:9190/androidRest/page/Icon.png</string>
 					</dict>
 				</array>
 				<key>metadata</key>
