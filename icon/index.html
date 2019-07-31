@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="css/mui.css" rel="stylesheet" />
+		<link href="css/icons-extra.css" rel="stylesheet" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<style>
+			.flex-container {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				margin-bottom: 50px;
+				-webkit-flex-flow: row wrap;
+				justify-content: space-between;
+				text-align: center;
+			}
+			
+			.mui-content-padded {
+				padding: 10px;
+			}
+			
+			.mui-content-padded h3 {
+				margin-bottom: 20px;
+			}
+			
+			.mui-content-padded a {
+				position: relative;
+				cursor: pointer;
+				margin: 3px;
+				width: 50px;
+				height: 50px;
+				display: inline-block;
+				text-align: center;
+				background-color: #fff;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+			}
+
+			.mui-content-padded span::after {
+				display: none;
+				position: absolute;
+				content: attr(class);
+				padding: 5px;
+				left: 50%;
+				top: 100%;
+				margin-top: 5px;
+				z-index: 1;
+				transform: translateX(-50%);
+				border-radius: 5px;
+				background-color: red;
+				color: white;
+				font-size: 16px;
+				font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+			}
+
+			.mui-content-padded a:hover span::after {
+				display: block;
+			}
+			
+			.mui-content-padded a .mui-icon,
+			.mui-content-padded a .mui-icon-extra {
+				margin-top: 12px;
+				font-size: 24px;
+			}
+			
+			.mui-spinner,
+			.mui-spinner-white {
+				margin-top: 12px
+			}
+			
+			.active .mui-spinner-indicator {
+				background: #007AFF;
+			}
+			
+			.mui-content a {
+				color: #8F8F94;
+			}
+			
+			.mui-content a.active {
+				color: #007aff;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div class="mui-content-padded">
+				<h3 style="text-align: center;">附加图标</h3>
+				<div class="flex-container">
+					<a><span class="mui-icon iconfont-icon icon-f9mod62"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod63"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod64"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod65"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod66"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod67"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod68"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod80"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod81"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod90"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod89"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod88"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod87"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod86"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod85"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod84"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod83"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod82"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod76"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod77"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod78"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod79"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod101"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod102"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod103"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod104"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod105"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod99"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod98"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod97"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod96"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod95"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod94"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod93"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod92"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod91"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod100"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod115"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod116"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod117"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod118"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod119"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod120"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod106"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod107"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod124"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod123"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod114"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod113"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod112"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod111"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod110"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod109"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod108"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod121"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod122"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod8"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod9"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod10"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod11"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod12"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod13"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod14"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod7"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod6"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod5"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod4"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod2"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod16"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod15"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod23"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod24"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod25"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod26"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod27"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod29"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod30"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod17"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod44"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod43"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod41"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod21"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod19"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod45"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod32"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod34"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod36"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod37"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod38"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod33"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod60"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod59"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod57"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod55"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod54"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod39"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod46"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod47"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod49"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod51"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod53"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod69"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod61"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod74"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod72"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-f9mod70"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-suishouji"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-moban"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-zhiduliucheng"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-cailiaokufang"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-cailiaochangjia"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-suishoupai"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-mima"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-huiyijiyao"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-ziyuanxinxipingtai"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-liuchengchaoqitongji"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-xingzhengbangongguanli"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-zidianxinxipingtai"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-shouhui"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-shouwen"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-fawen"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-tongyi"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-gongsilei"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-xitonggongju"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-kaoqinliuchengtongji"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-zidian"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-chengyuanguanli"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-richenganpai"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-chayuericheng"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-yonhuxinxipingtai"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-chengyuanyingyonchakanqi"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-chayuerizhi"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-shangchuanwenjian"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-guanliyuan"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-tongjifenxi"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-gerenxinxi"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-zhuanxierizhi"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-xiazaibaocun"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-xiugai"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-caidan"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-xialatubiao"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-xitongguanli"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-yewuzhongxin"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-baobiaoguanli"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-tongzhi"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-daiban"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-hetongguanli"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-jichubangong"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-sousuo"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-huoquxiaoxi"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-guanbi"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-shoujianxiang"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-xiaoxi"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-shangchu"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-yewushouliliebiao"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-yemiandingyi"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-duihaocheckmark17"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-liebiaolist29"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-liebiaolist46"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-lajigarbage6"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-xuanzeselection7"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-zitifont4"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-zidongfutiescalator4"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-wenjianjiafolder84"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-wenjianjiafolder85"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-xianline20"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-wendangdocument84"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-wendangdocument85"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-wenjianjiafolder79"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-songkaiundo6"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-wanqudecurved14"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-shuqianbookmark11"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-ruanpanfloppy16"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-ruanpanfloppy15"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-ruanpanfloppy14"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-ruanpanfloppy13"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-lishihistory2"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-jiantouarrow514"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-jiantouarrow511"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-jiantouarrow486"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-jiashangplus33"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-jibendebasic1"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-dakaiopen134"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-dakaiopen129"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-dakaiopen127"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-12"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-2"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-1"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-14"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-15"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-17"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-19"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-22"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-23"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-46"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-40"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-41"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-42"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-34"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-56"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-track13"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-track12"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-track11"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-track9"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-track10"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-ziyua7"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-track7"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-track5"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-track6"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-track4"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-track3"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-cuidan10"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-track1"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-yiban6"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-yiban5"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-yiban4"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-yiban3"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-yiban2"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-yiban1"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-ziyuan5"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-ziyuan3"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-ziyuan4"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-ziyuan6"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-ziyuan2"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-ziyuan1"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-cuidan1"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-cuidan2"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-cuidan3"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-cuidan4"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-cuidan5"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-cuidan6"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-cuidan7"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-cuidan8"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-cuidan9"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-chexiao1"></span></a>
+					<a><span class="mui-icon iconfont-icon icon-chexiao2"></span></a>
+				</div>
+
+				<h3 style="text-align: center;">MUI扩展图标</h3>
+				<div class="flex-container">
+					<a><span class="mui-icon-extra mui-icon-extra-calc"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-new"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-card"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-grech"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-trend"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-cart"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-custom"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-express"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-class"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-gift"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-gold"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-heart"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-order"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-alipay"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-calendar"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-prech"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-heart-filled"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-rank"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-notice"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-share"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-regist"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-sweep"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-people"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-addpeople"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-peoples"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-like"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-filter"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-at"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-comment"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-computer"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-lamp"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-dictionary"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-xiaoshuo"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-topic"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-classroom"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-university"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-outline"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-find"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-arrowleftcricle"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-arrowrightcricle"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-top"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-phone"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-holiday"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-hotel"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-cold"></span></a>
+					<a><span class="mui-icon-extra mui-icon-extra-cate"></span></a>
+				</div>
+
+				<h3 style="text-align: center;">MUI图标</h3>
+				<div class="flex-container">
+					<a id="icon-icon-contact"><span class="mui-icon mui-icon-contact"></span></a>
+					<a id="icon-person"><span class="mui-icon mui-icon-person"></span></a>
+					<a id="icon-personadd"><span class="mui-icon mui-icon-personadd"></span></a>
+					<a id="icon-phone"><span class="mui-icon mui-icon-phone"></span></a>
+					<a id="icon-email"><span class="mui-icon mui-icon-email"></span></a>
+					<a id="icon-chatbubble"><span class="mui-icon mui-icon-chatbubble"></span></a>
+					<a id="icon-chatboxes"><span class="mui-icon mui-icon-chatboxes"></span></a>
+					<a><span class="mui-icon mui-icon-weibo"></span></a>
+					<a><span class="mui-icon mui-icon-weixin"></span></a>
+					<a><span class="mui-icon mui-icon-pengyouquan"></span></a>
+					<a><span class="mui-icon mui-icon-chat"></span></a>
+					<a><span class="mui-icon mui-icon-qq"></span></a>
+
+					<a><span class="mui-icon mui-icon-videocam"></span></a>
+					<a><span class="mui-icon mui-icon-camera"></span></a>
+					<a><span class="mui-icon mui-icon-image"></span></a>
+					<a id="icon-mic"><span class="mui-icon mui-icon-mic"></span></a>
+					<a><span class="mui-icon mui-icon-micoff"></span></a>
+					<a id="icon-location"><span class="mui-icon mui-icon-location"></span></a>
+					<a><span class="mui-icon mui-icon-map"></span></a>
+					<a><span class="mui-icon mui-icon-compose"></span></a>
+					<a><span class="mui-icon mui-icon-trash"></span></a>
+					<a><span class="mui-icon mui-icon-upload"></span></a>
+					<a><span class="mui-icon mui-icon-download"></span></a>
+					<a id="icon-close"><span class="mui-icon mui-icon-close"></span></a>
+					<a><span class="mui-icon mui-icon-closeempty"></span></a>
+					<a><span class="mui-icon mui-icon-redo"></span></a>
+					<a><span class="mui-icon mui-icon-undo"></span></a>
+					<a id="icon-refresh"><span class="mui-icon mui-icon-refresh"></span></a>
+					<a><span class="mui-icon mui-icon-refreshempty"></span></a>
+					<a><span class="mui-icon mui-icon-reload"></span></a>
+					<a><span class="mui-icon mui-icon-loop"></span></a>
+					<!--<a><span class="mui-icon mui-icon-loopstrong"></span></a>-->
+					<a>
+						<span class="mui-spinner"></span>
+					</a>
+					<a id="icon-star"><span class="mui-icon mui-icon-star"></span></a>
+					<a><span class="mui-icon mui-icon-starhalf"></span></a>
+					<a id="icon-plus"><span class="mui-icon mui-icon-plus"></span></a>
+					<a><span class="mui-icon mui-icon-plusempty"></span></a>
+					<a id="icon-minus"><span class="mui-icon mui-icon-minus"></span></a>
+					<a><span class="mui-icon mui-icon-checkmarkempty"></span></a>
+					<a><span class="mui-icon mui-icon-search"></span></a>
+					<!--<a><span class="mui-icon mui-icon-searchstrong"></span></a>-->
+					<!--<a><span class="mui-icon mui-icon-share"></span></a>-->
+
+					<a id="icon-home"><span class="mui-icon mui-icon-home"></span></a>
+					<a><span class="mui-icon mui-icon-navigate"></span></a>
+					<a id="icon-gear"><span class="mui-icon mui-icon-gear"></span></a>
+					<a><span class="mui-icon mui-icon-settings"></span></a>
+					<!--<a><span class="mui-icon mui-icon-settingsstrong"></span></a>-->
+					<a><span class="mui-icon mui-icon-list"></span></a>
+					<a><span class="mui-icon mui-icon-bars"></span></a>
+					<a><span class="mui-icon mui-icon-paperplane"></span></a>
+					<a id="icon-info"><span class="mui-icon mui-icon-info"></span></a>
+					<a id="icon-help"><span class="mui-icon mui-icon-help"></span></a>
+					<a><span class="mui-icon mui-icon-locked"></span></a>
+					<a id="icon-more"><span class="mui-icon mui-icon-more"></span></a>
+					<a><span class="mui-icon mui-icon-flag"></span></a>
+					<a><span class="mui-icon mui-icon-paperclip"></span></a>
+					<a><span class="mui-icon mui-icon-eye"></span></a>
+
+					<a><span class="mui-icon mui-icon-back"></span></a>
+					<a><span class="mui-icon mui-icon-forward"></span></a>
+
+					<a><span class="mui-icon mui-icon-arrowup"></span></a>
+					<a><span class="mui-icon mui-icon-arrowdown"></span></a>
+					<a><span class="mui-icon mui-icon-arrowleft"></span></a>
+					<a><span class="mui-icon mui-icon-arrowright"></span></a>
+
+					<a><span class="mui-icon mui-icon-arrowthinup"></span></a>
+					<a><span class="mui-icon mui-icon-arrowthindown"></span></a>
+					<a><span class="mui-icon mui-icon-arrowthinleft"></span></a>
+					<a><span class="mui-icon mui-icon-arrowthinright"></span></a>
+
+					<a><span class="mui-icon mui-icon-pulldown"></span></a>
+				</div>
+			</div>
+		</div>
+		<script src="js/mui.js"></script>
+		<script src="js/clipboard.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			var active = null;
+			mui(".mui-content").on("tap", "a", function() {
+				if(!active) {
+					this.classList.add("active");
+					active = this;
+				} else {
+					active.classList.remove("active");
+					this.classList.add("active");
+					active = this;
+				}
+			});
+			new Clipboard('.mui-icon', {
+				text: trigger => trigger.className
+			}).on('success', function(e) {
+				e.clearSelection();
+				mui.toast('复制成功!');
+			});
+			new Clipboard('.mui-icon-extra', {
+				text: trigger => trigger.className
+			}).on('success', function(e) {
+				e.clearSelection();
+				mui.toast('复制成功!');
+			});
+		</script>
+	</body>
+
+</html>
