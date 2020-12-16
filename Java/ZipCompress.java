@@ -1,4 +1,4 @@
-package cn.gogpay.dcb.docp.service.report;
+package com.xiangqi.test;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -9,7 +9,6 @@ import java.util.zip.ZipOutputStream;
 /**
  * zip压缩工具
  *
- * @author zhangxiangqi@gogpay.cn
  * @date 2019/12/25 025 9:40
  */
 public class ZipCompress {
