@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>小程序</title>
+		<style>
+			[v-cloak] {
+				display: none;
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			.list {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				height: 80vh;
+				width: 80%;
+				margin: 20px auto;
+				list-style: none;
+			}
+
+			.item {
+				position: relative;
+				font-size: larger;
+				line-height: 2em;
+				border-radius: 10px;
+				border: 8px double #b9b3b3;
+				box-shadow: 8px 12px 8px #9c9797;
+				transition-property: background-color;
+				transition-duration: 500ms;
+			}
+
+			.item.opening {
+				background: #9c9797;
+			}
+
+			.item.danger {
+				background-color: #dd524d;
+			}
+
+			.item.success {
+				background-color: #4cd964;
+			}
+
+			.item:before,
+			.item:after {
+				content: '';
+				position: absolute;
+				top: 0;
+				right: 0;
+				height: 5px;
+				width: 0;
+				background: #007aff;
+				transition: 600ms ease all;
+			}
+
+			.item:after {
+				right: inherit;
+				top: inherit;
+				left: 0;
+				bottom: 0;
+				background: #8a6de9;
+			}
+
+			.item.opening:before,
+			.item.opening:after {
+				width: 100%;
+			}
+
+			.msg {
+				background-color: #f0ad4e;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app" v-cloak>
+			<ul class="list">
+				<li v-for="door in doorData.data" :key="door.id" @click="open(door, $event)" :class="{item: true, opening: door.id===openingId, success: getStatus(door.id)===1, danger: getStatus(door.id)===2}">{{door.equipmentAddress}}</li>
+			</ul>
+			<p v-if="errmsg" class="msg">{{errmsg}}</p>
+		</div>
+		<script src="axios.min.js"></script>
+		<script src="vue.min.js"></script>
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					errmsg: '',
+					openingId: '',
+					timer: null,
+					result: {},
+					doorData: {
+						"codex": "ACCESS_OK",
+						"data": [{
+								"id": "6496CA3171211ACDE050A10A7E1C5D89",
+								"doorlockType": "0",
+								"doorName": "龙祺苑3号门",
+								"blockName": "世纪城-龙祺苑",
+								"blockCode": "5227450031",
+								"equipmentAddress": "世纪城-龙祺苑龙祺苑3号门",
+								"picture": null
+							},
+							{
+								"id": "64993A8D166B1FD3E050A10A7E1C4DC4",
+								"doorlockType": "0",
+								"doorName": "龙祺苑2号门",
+								"blockName": "世纪城-龙祺苑",
+								"blockCode": "5227450031",
+								"equipmentAddress": "世纪城-龙祺苑龙祺苑2号门",
+								"picture": null
+							},
+							{
+								"id": "649BB0F313283D9CE050A10A7E1C3092",
+								"doorlockType": "0",
+								"doorName": "龙祺苑1号门A1",
+								"blockName": "世纪城-龙祺苑",
+								"blockCode": "5227450031",
+								"equipmentAddress": "世纪城-龙祺苑龙祺苑1号门A1",
+								"picture": null
+							},
+							{
+								"id": "64993A8D1BE31FD3E050A10A7E1C4DC4",
+								"doorlockType": "0",
+								"doorName": "龙祺苑1号门A2",
+								"blockName": "世纪城-龙祺苑",
+								"blockCode": "5227450031",
+								"equipmentAddress": "世纪城-龙祺苑龙祺苑1号门A2",
+								"picture": null
+							},
+							{
+								"id": "6446E12D41C45D02E050A10A7E1C1BE3",
+								"doorlockType": "0",
+								"doorName": "A1",
+								"blockName": "世纪城-龙祺苑",
+								"blockCode": "5227450031",
+								"equipmentAddress": "龙祺苑1栋1单元A1",
+								"picture": null
+							},
+							{
+								"id": "87307630153830400",
+								"doorlockType": "1",
+								"doorName": "B1",
+								"blockName": "世纪城-龙祺苑",
+								"blockCode": "5227450031",
+								"equipmentAddress": "龙祺苑1栋1单元B1",
+								"picture": null
+							}
+						],
+						"message": "调用成功",
+						"success": true,
+						"code": "200"
+					}
+				},
+				methods: {
+					getStatus(doorId) {
+						if (this.result.hasOwnProperty(doorId)) {
+							return this.result[doorId] ? 1 : 2
+						}
+						return 0
+					},
+					open(door, {
+						target
+					}) {
+						if (!this.timer) {
+							this.errmsg = '';
+							this.openingId = door.id;
+							delete this.result[door.id];
+							this.timer = setTimeout(() => {
+								this.openingId = ''
+								this.timer = null
+
+								axios.get('https://miniapp-ser.shijiplus.com/api/common/door/open/' + door.id, {
+										headers: {
+											'authorization': '9uJh6BmI537kqX8gZP5XZFkR60KP7L_OUhMPnKsXLzxyEAdddJ4HeSsY78zkewe9OZ-E73EkrEHAMO25'
+										}
+									})
+									.then(({
+										data: res
+									}) => {
+										let success = '200' === res.code;
+										this.$set(this.result, door.id, success);
+										if (!success) {
+											this.errmsg = res.code + res.message;
+											console.log(res)
+										}
+									})
+									.catch(e => console.log(e));
+							}, 500);
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
