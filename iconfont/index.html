@@ -56,44 +56,6 @@
     left: 260px;
     right: auto;
   }
-  .p-github, .p-other {
-    position: fixed;
-    right: 50px;
-    bottom: 70px;
-    background-color: #eff3f6;
-    background-image: linear-gradient(-180deg, #fafbfc, #eff3f6 90%);
-    color: #24292e;
-    border: 1px solid rgba(27, 31, 35, .2);
-    border-radius: 3px;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 20px;
-    padding: 6px 12px;
-  }
-  .p-help {
-    position: fixed;
-    right: 50px;
-    top: 50px;
-    width: 30px;
-    height: 30px;
-    color: #666666;
-    z-index: 2;
-    line-height: 30px;
-    font-weight: bolder;
-    border-radius: 50%;
-    border: 1px solid rgba(27, 31, 35, .2);
-    cursor: pointer;
-    background-color: #eff3f6;
-    background-image: linear-gradient(-180deg, #fafbfc, #eff3f6 90%);
-  }
-  .p-github:hover, .p-other:hover, .p-help {
-    opacity: 0.9;
-  }
-  .p-other {
-    bottom: 30px;
-  }
   /*字体文件载入*/
   .p-input-container {
     display: flex;
@@ -101,11 +63,12 @@
   }
   .p-input-container .line {
     vertical-align: top;
-    width: 5px;
+    /* width: 5px; */
     height: 400px;
     transform-origin: top;
-    background-repeat: repeat;
-    background-image: url(http://www.luckly-mjw.cn/baseSource/icon-dotted-y.png);
+    border-left: 3px dashed;
+    /* background-repeat: repeat; */
+    /* background-image: url(http://www.luckly-mjw.cn/baseSource/icon-dotted-y.png); */
   }
   .p-input-container .url-box, .file-box {
     height: 300px;
@@ -173,7 +136,7 @@
     transition-property: background, box-shadow;
   }
   .p-icon-item-background-0 {
-    background-image: url(http://upyun.luckly-mjw.cn/Assets/base-source/png-background.png);
+    background-image: url(https://upyun.luckly-mjw.cn/Assets/base-source/png-background.png);
   }
   .p-icon-item-background-1 {
     background-color: #FCFCFC;
